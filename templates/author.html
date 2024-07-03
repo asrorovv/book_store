@@ -1,0 +1,25 @@
+<!-- templates/author_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="author-info">
+    <h2>{{ author.name }}</h2>
+    <p>{{ author.bio }}</p>
+</section>
+
+<section class="books">
+    <h3>Books by {{ author.name }}</h3>
+    {% for book in books %}
+    <article class="book">
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+        <div class="book-info">
+            <h4>{{ book.title }}</h4>
+            <p class="price">${{ book.price }}</p>
+            <p class="quantity">Available: {{ book.quantity }}</p>
+            <p class="description">{{ book.description }}</p>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

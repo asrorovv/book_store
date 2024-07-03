@@ -1,0 +1,20 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="books">
+    {% for book in books %}
+    <article class="book">
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+        <div class="book-info">
+            <h2>{{ book.title }}</h2>
+            <p class="author">by <a href="{% url 'author_detail' book.author.id %}">{{ book.author.name }}</a></p>
+            <p class="price">${{ book.price }}</p>
+            <p class="quantity">Available: {{ book.quantity }}</p>
+            <p class="description">{{ book.description }}</p>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
